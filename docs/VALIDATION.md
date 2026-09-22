@@ -217,7 +217,7 @@ Tested behavior included:
 
 The packaged Windows application remained functional through the tests.
 
-The Windows release is code signed before distribution. Manual GUI testing was performed after code signing. The signed release is verified by its digital signature.
+The Windows release is unsigned. Manual GUI testing was performed on the Windows application before release.
 
 The packaged Windows application contains:
 

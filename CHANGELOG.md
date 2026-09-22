@@ -21,7 +21,6 @@ All notable BLACKSITE release changes will be recorded here.
 - Automated testing, stress testing, real data checks, and a one hour GUI soak test.
 - Improved startup loading performance for very large CSV files.
 - Packaged macOS and Windows applications.
-- Windows release code signing.
 - MIT License.
 
 ### Known limitations

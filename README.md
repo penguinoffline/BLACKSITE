@@ -58,6 +58,8 @@ If you just want to use BLACKSITE without setting up Python, packaged applicatio
 
 You can find both in the GitHub Release.
 
+The Windows build is currently unsigned, so Windows may show a security warning when opening it for the first time.
+
 ## My core pipeline
 
 ```text
@@ -264,7 +266,7 @@ BLACKSITE v1.0.0 is released for macOS and Windows.
 
 Both applications have been built and manually tested, and the automated validation suite passes on both.
 
-The Windows build is code signed before release. The final release files and checksums are provided through the GitHub Release.
+The Windows build is unsigned, so Windows may show a security warning when opening it for the first time. The final release files and checksums are provided through the GitHub Release.
 
 Thank you for using BLACKSITE v1.0.
 
