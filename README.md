@@ -32,7 +32,7 @@ Better and more exciting things will be coming along in the future where firmwar
 
 Thanks for reading :)
 
-<em>~Pingura out~</em>
+<em>&#126;Pingura out&#126;</em>
 
 ## What v1.0 does
 
