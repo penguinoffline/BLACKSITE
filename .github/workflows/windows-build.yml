@@ -1,0 +1,42 @@
+name: Windows Build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Get repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install BLACKSITE dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Install test and build tools
+        run: python -m pip install pytest==8.3.4 pyinstaller==6.22.3
+
+      - name: Run validation suite
+        shell: pwsh
+        run: |
+          $env:BLACKSITE_PATH = "$PWD\BLACKSITE_v1.0.py"
+          python -m pytest -q tests\test_blacksite_v1_validation_rev4.py
+
+      - name: Build Windows application
+        run: python -m PyInstaller --noconfirm --clean --windowed --name BLACKSITE BLACKSITE_v1.0.py
+
+      - name: Package Windows application
+        shell: pwsh
+        run: Compress-Archive -Path dist\BLACKSITE\* -DestinationPath BLACKSITE_v1.0_Windows.zip
+
+      - name: Upload Windows build
+        uses: actions/upload-artifact@v4
+        with:
+          name: BLACKSITE-v1.0-Windows
+          path: BLACKSITE_v1.0_Windows.zip

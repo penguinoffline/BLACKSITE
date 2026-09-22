@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environments
+.venv/
+venv/
+env/
+
+# IDEs / OS
+.DS_Store
+.spyproject/
+.vscode/
+.idea/
+
+# Packaging
+build/
+dist/
+*.spec.bak
+
+# BLACKSITE generated exports / local run artifacts
+*_summary*.csv
+*_history*.csv
+exports/
+logs/
+
+# Temporary files
+*.tmp
+*.log
+
+# Local release binaries
+release/
