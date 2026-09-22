@@ -217,6 +217,7 @@ See [`docs/KNOWN_LIMITATIONS.md`](docs/KNOWN_LIMITATIONS.md) for more detail.
 
 ## My repository layout
 
+```text
 BLACKSITE/
 ├── BLACKSITE_v1.0.py
 ├── BLACKSITE.spec
@@ -247,6 +248,7 @@ BLACKSITE/
     │   └── bug_report.md
     └── workflows/
         └── windows-build.yml
+```
 
 I intentionally made v1.0 a single Python source file. Modularization is planned to begin gradually in v1.1+.
 
