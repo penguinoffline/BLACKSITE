@@ -29,14 +29,10 @@ jobs:
           python -m pytest -q tests\test_blacksite_v1_validation_rev4.py
 
       - name: Build Windows application
-        run: python -m PyInstaller --noconfirm --clean --windowed --name BLACKSITE BLACKSITE_v1.0.py
-
-      - name: Package Windows application
-        shell: pwsh
-        run: Compress-Archive -Path dist\BLACKSITE\* -DestinationPath BLACKSITE_v1.0_Windows.zip
+        run: python -m PyInstaller --noconfirm --clean --windowed --name BLACKSITE --icon assets\blacksite_icon.ico BLACKSITE_v1.0.py
 
       - name: Upload Windows build
         uses: actions/upload-artifact@v4
         with:
           name: BLACKSITE-v1.0-Windows
-          path: BLACKSITE_v1.0_Windows.zip
+          path: dist\BLACKSITE\
