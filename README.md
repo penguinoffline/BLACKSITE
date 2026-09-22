@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <img src="assets/blacksite_logo.png" width="18%">
+  <img src="assets/blacksite_logo.png" width="33%">
 </p>
 
 BLACKSITE is built to be a Python signal analysis and persistent spectral tracking workstation. v1.0 is intentionally an **offline/replay system** by design: it loads prerecorded CSV or WAV data, replays it progressively like a live source, detects peaks, maintains track identity through time, refines frequency structure, calculates signal metrics, and then presents everything in one operator dashboard.
@@ -32,7 +32,7 @@ Better and more exciting things will be coming along in the future where firmwar
 
 Thanks for reading :)
 
-*~Pingura out~*
+<em>~Pingura out~</em>
 
 ## What v1.0 does
 
