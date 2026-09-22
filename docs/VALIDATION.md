@@ -161,16 +161,6 @@ Particularly, current V&V does not turn these into guarantees:
 - Matplotlib 3.10.0
 - PyQt5 5.15.10
 - Qt 5.15.2
-
-## Development and validation environment
-
-BLACKSITE v1.0 source validation was performed using:
-
-- Python 3.13.5
-- NumPy 2.1.3
-- Matplotlib 3.10.0
-- PyQt5 5.15.10
-- Qt 5.15.2
 - pytest 8.3.4
 
 ## macOS packaging
@@ -197,6 +187,24 @@ Tested packaged behavior included:
 
 The packaged application remained functional through the tested workflow.
 
+## Windows packaging
+
+The Windows application was built on a GitHub hosted Windows runner with:
+
+- Python 3.13
+- PyInstaller 6.22.3
+
+The automated validation suite has also been tested on Windows:
+
+`113 passed, 1 skipped, 1 xfailed, 1 xpassed in 5.52s`
+
+The package was also inspected to confirm that it contains:
+
+- `BLACKSITE.exe`
+- the PyQt5 Windows platform plugin `qwindows.dll`
+
+The Windows application has not yet undergone manual GUI testing. The current Windows evidence only covers automated validation, successful packaging, and inspection of the structure of the packaged artifact.
+
 ### Release hashes
 
 `BLACKSITE_v1.0.py`
@@ -210,3 +218,9 @@ SHA-256:
 SHA-256:
 
 `12c5fc99ee0362b5fb5256a968961d83b8105225b5e80c6eb49b877ec517ea34`
+
+`BLACKSITE_v1.0_Windows.zip`
+
+SHA-256:
+
+`3cca63ef14e2dc283914e00737fa0f1647c2f4e013e0838d8fbedbc8fac5431f`
