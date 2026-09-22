@@ -8,7 +8,7 @@ v1.0 loads prerecorded CSV and WAV data and replays it progressively. It does no
 
 ## 2. Frequency based track association
 
-The current tracker uses relatively simple one to one association based mainly on rough frequency proximity in consecutive time frames. It works well for the tested stationary and drifting cases but does not guarantee physical identity when sources cross, merge, split, or change in complicated ways.
+The current tracker uses relatively simple one to one association based mainly on rough frequency proximity between time frames. It works well for the tested stationary and drifting cases but does not guarantee physical identity when sources cross, merge, split, or change in complicated ways.
 
 ## 3. Standard deviation based threshold calculation
 
@@ -17,8 +17,6 @@ Peak detection currently uses approximately:
 `median(magnitude) + 3 * standard_deviation(magnitude)`
 
 The median is robust to isolated peaks, but the standard deviation can increase when a spectrum contains many strong frequencies. This can raise the threshold and hide weaker components.
-
-This is a known generalization limitation.
 
 ## 4. DC 0Hz endpoint detector edge case
 
@@ -34,7 +32,7 @@ The current score combines SNR, frequency stability, bandwidth, strength stabili
 
 The frequency stability contribution to confidence currently reaches zero at approximately 1Hz frequency standard deviation.
 
-Because the short analysis window is one second, this corresponds approximately to one short FFT bin, which is a reasonable interpretation. It is still an absolute frequency scale rather than a relative stability model, so its meaning can differ between low and high frequencies.
+Because the short analysis window is one second, this corresponds approximately to one short FFT bin. It is still an absolute frequency scale rather than a relative stability model, so its meaning can differ between low and high frequencies.
 
 ## 7. SNR is linear, not dB
 
@@ -62,15 +60,15 @@ The responsive short FFT needs one second of data, while the long refinement sta
 
 ## 12. Dense high-rate performance
 
-Sparse 192kHz data is usable in testing, but dense or polyphonic input (such as real songs) sampled at 192kHz or above can create many tracks and increase CPU and UI lag substantially.
+Sparse 192kHz data is usable in testing, but dense or polyphonic input (such as real songs) sampled at 192kHz can create many tracks and increase CPU and UI lag substantially.
 
 No hard maximum track cap exists yet.
 
 ## 13. Large CSV startup time
 
-The one hour soak CSV (approximately 3.6 million rows) took roughly 10 seconds to load after the startup loading optimization. 
+The one hour soak CSV (approximately 3.6 million rows) took roughly 10 seconds to load after the startup loading optimization.
 
-Runtime after loading remained stable, so the remaining startup cost comes primarily from validating a very large plain text CSV file line by line.
+Runtime after loading remained stable, so this is a startup cost rather than a progressive runtime slowdown.
 
 ## 14. No universal sensor calibration
 

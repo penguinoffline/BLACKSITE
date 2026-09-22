@@ -22,18 +22,18 @@ Time unit text may be supplied in parentheses or square brackets in the header.
 
 Supported units:
 
-- seconds: `s`, `sec`, `secs`, `second`, `seconds`;
-- milliseconds: `ms`, `millisecond`, `milliseconds`;
-- microseconds: `us`, `µs`, `microsecond`, `microseconds`;
-- nanoseconds: `ns`, `nanosecond`, `nanoseconds`.
+- seconds: `s`, `sec`, `secs`, `second`, `seconds`
+- milliseconds: `ms`, `millisecond`, `milliseconds`
+- microseconds: `us`, `µs`, `microsecond`, `microseconds`
+- nanoseconds: `ns`, `nanosecond`, `nanoseconds`
 
-A recognized time column with no unit will be processed in seconds.
+A recognized time column with no unit is treated as seconds.
 
 ### Timestamp rule
 
 Sampling rate is estimated from the reciprocal of the median timestamp spacing.
 
-v1.0 rejects the file if any timestamp step differs from the median step by more than approximately +/-1%. This prevents irregular data from entering a processing path that assumes uniform sampling.
+v1.0 rejects the file if any timestamp step differs from the median step by more than approximately ±1%. The FFT path assumes uniformly sampled data, so irregular CSV timestamps are rejected instead of being resampled.
 
 ### Recognized column names
 
@@ -68,7 +68,7 @@ Mono and multichannel files are accepted. Multichannel data is averaged across c
 
 The WAV must contain at least one second of audio or signal data.
 
-## Not supported in v1.0 yet:
+## Not supported in v1.0 yet
 
 - compressed WAV codecs
 - arbitrary binary sensor formats

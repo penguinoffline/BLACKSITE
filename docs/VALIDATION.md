@@ -198,12 +198,31 @@ The automated validation suite has also been tested on Windows:
 
 `113 passed, 1 skipped, 1 xfailed, 1 xpassed in 5.52s`
 
-The package was also inspected to confirm that it contains:
+The packaged Windows application also completed manual GUI testing.
+
+Tested behavior included:
+
+- application launch and reopen
+- loading the included three tone example
+- replay
+- pause and resume
+- restart
+- dashboard
+- track selection
+- scrolling through the Track Registry
+- display frequency slider
+- tracking through FINISHED
+- export during replay
+- export after FINISHED
+
+The packaged Windows application remained functional through the tests.
+
+The Windows release is code signed before distribution. Manual GUI testing was performed after code signing. The signed release is verified by its digital signature.
+
+The packaged Windows application contains:
 
 - `BLACKSITE.exe`
 - the PyQt5 Windows platform plugin `qwindows.dll`
-
-The Windows application has not yet undergone manual GUI testing. The current Windows evidence only covers automated validation, successful packaging, and inspection of the structure of the packaged artifact.
 
 ### Release hashes
 
@@ -213,14 +232,4 @@ SHA-256:
 
 `83d36afd12ad9146a46a8be3dde71f7328736bb2b8448acc37811b8a7015b434`
 
-`BLACKSITE_v1.0_macOS.zip`
-
-SHA-256:
-
-`12c5fc99ee0362b5fb5256a968961d83b8105225b5e80c6eb49b877ec517ea34`
-
-`BLACKSITE_v1.0_Windows.zip`
-
-SHA-256:
-
-`3cca63ef14e2dc283914e00737fa0f1647c2f4e013e0838d8fbedbc8fac5431f`
+Final SHA-256 checksums for the macOS and Windows releases are published with the GitHub Release so that they correspond to the exact binaries distributed.

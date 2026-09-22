@@ -6,7 +6,7 @@ BLACKSITE treats signal detections as persistent objects with history. The main 
 
 **measurement != track identity != display**
 
-A peak is a measurement from one analysis frame. A track is BLACKSITE's persistent identity guess across frames. The dashboard is only the presentation layer for the analysis state.
+A peak is a measurement from one analysis frame. A track is BLACKSITE's persistent identity guess across frames. The dashboard is only the presentation layer for the analysis.
 
 ## Logical pipeline
 
@@ -55,14 +55,14 @@ A newly detected frequency starts as a **CANDIDATE**.
 
 A candidate becomes **ACTIVE** after it has been detected at least twice.
 
-For each new frame, a new detection is matched to the nearest previous track if its rough frequency is within one short FFT bin (1Hz) of that track.
+For each new frame, a new detection is matched to the nearest unused previous track if its rough frequency is within one short FFT bin (1Hz).
 
 If an ACTIVE track is temporarily not detected:
 
 - 1 or 2 consecutive misses → **COASTING**
 - 3 or more consecutive misses → **LOST**
 
-A LOST track can still be reacquired. If a new detection appears within one short FFT bin of the lost track and within the 8 second lost track timeout, BLACKSITE restores the original track ID and returns it to ACTIVE.
+A LOST track can still be reacquired. If a new detection appears within one short FFT bin before the 8 seconds timeout expires, BLACKSITE restores the original track ID and returns it to ACTIVE.
 
 If a LOST track is not reacquired within 8 seconds, it becomes **TERMINATED**.
 
@@ -72,9 +72,9 @@ If a LOST track is not reacquired within 8 seconds, it becomes **TERMINATED**.
 
 BLACKSITE uses two resolutions:
 
-The short FFT (1Hz) provides the main rough frequency used for detection and tracking.
+The short FFT has approximately 1Hz bin spacing and provides the main rough frequency used for detection and tracking.
 
-The long FFT (0.25Hz) provides higher resolution frequency candidates around each rough track. Refined long FFT peaks are assigned to the nearest rough peak if they fall within three short FFT bins of it.
+The long FFT has approximately 0.25Hz bin spacing and provides higher resolution frequency detections around each rough track. Refined long FFT peaks are assigned to the nearest rough peak if they fall within three short FFT bins of it.
 
 These refined candidates are accumulated over time and grouped into frequency components.
 
@@ -154,7 +154,7 @@ The detected spectral magnitude of the rough frequency peak.
 
 BLACKSITE also keeps the full strength history for each track.
 
-The physical unit of strength depends on the sensor, scaling, and acquisition chain used to produce the input data. 
+The physical unit of strength depends on the sensor, scaling, and acquisition chain used to produce the input data.
 
 BLACKSITE v1.0 does not include a universal sensor calibration layer.
 
@@ -274,7 +274,7 @@ The current strength stability score is:
 - relative variation >= 0.20 scores 0.0
 - between 0 and 0.20 → decreases linearly
 
-Therefore a signal whose strength varies by approximately 20% or more relative to its average receives no strength stability contribution to confidence.
+If the strength varies by around 20% or more relative to its average, the strength stability part contributes 0 to confidence.
 
 ---
 
@@ -354,7 +354,7 @@ The final confidence is a weighted average of every available component:
 
 If one metric is unavailable, BLACKSITE excludes that metric and its weight instead of assigning it a score of zero.
 
-Therefore, the confidence value represents the quality and consistency of the evidence BLACKSITE currently has for a track.
+The confidence value is meant to describe how strong and consistent the current track evidence is.
 
 For example, a high confidence track generally has:
 
@@ -376,21 +376,21 @@ instead of:
 
 ## GUI and runtime architecture
 
-v1.0 uses Matplotlib with a Qt backend. The main processing callback advances replay every 500 ms. Expensive display work is not all performed synchronously inside that callback:
+v1.0 uses Matplotlib with a Qt backend. The main processing callback advances replay every 500 ms. Display work is not all performed together inside that callback:
 
 - waveform and spectrum are kept lightweight
 - spectrogram frequency rows are reduced with max pooling when needed
 - waveform points are reduced while preserving local extrema
-- dense and spectrogram refreshes are alternated or deferred through one shot Qt timers
-- click specific backgrounds allow selected track history redraw without fully repainting everything
+- graph and spectrogram refreshes are alternated or deferred through one-shot Qt timers
+- click specific background caching lets selected track history redraw without repainting the full dashboard
 
-This architecture was introduced after profiling showed that display work, not the data preparation, dominated GUI lag.
+I added these changes after profiling showed that most of the GUI lag came from rendering rather than preparing the data.
 
 ## v1.0 file architecture
 
-The release remains mostly one production Python file. This is intentional for the v1.0 freeze.
+The release remains one Python file. This is intentional for my v1.0 freeze.
 
-Modularization begins incrementally in v1.1-v1.3. The target responsibilities eventually become approximately:
+I plan to split the project up gradually through v1.1-v1.3. The rough target structure is:
 
 ```text
 blacksite/

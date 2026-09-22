@@ -2,7 +2,7 @@
 
 All notable BLACKSITE release changes will be recorded here.
 
-## [1.0.0] - Unreleased
+## [1.0.0] - 2026-09-23
 
 ### Added
 - Offline, replay signal analysis workstation.
@@ -18,8 +18,11 @@ All notable BLACKSITE release changes will be recorded here.
 - Summary and history CSV exports.
 - 8, 16, 24, and 32-bit PCM WAV support and multichannel to mono conversion.
 - Incremental buffer processing and bounded display for improved long run performance.
-- Automated V&V, stress testing, real data qualification, and one hour GUI soak testing.
+- Automated testing, stress testing, real data checks, and a one hour GUI soak test.
 - Improved startup loading performance for very large CSV files.
+- Packaged macOS and Windows applications.
+- Windows release code signing.
+- MIT License.
 
 ### Known limitations
 - No physical live acquisition in v1.0 yet.
@@ -28,9 +31,3 @@ All notable BLACKSITE release changes will be recorded here.
 - Detection and confidence thresholds are engineering heuristics rather than calibrated statistical probabilities.
 - CSV timestamps must be approximately uniformly sampled.
 - Dense 192kHz inputs can produce heavy CPU and UI lag.
-
-### Release work still open
-- Pin final runtime/build dependency versions.
-- Build and qualify macOS application.
-- Build and qualify Windows executable.
-- Add final software license.

@@ -24,7 +24,7 @@ If source, include Python version and installed dependency versions.
 - [ ] CSV
 - [ ] WAV
 
-Describe sample rate, duration, WAV bit depth/channels, or CSV header/time units where relevant.
+Include sample rate, duration, WAV bit depth/channels, or CSV header/time units where relevant.
 
 ## What happened?
 
@@ -48,4 +48,4 @@ Paste the traceback/error message if one was shown.
 
 Include screenshots or a minimal reproducible input if you are allowed to share it.
 
-Thank you for using BLACKSITE and sorry for any inconvenience! 
+Thank you for using BLACKSITE and sorry for any inconvenience!
