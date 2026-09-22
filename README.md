@@ -49,6 +49,15 @@ Thanks for reading :)
 - CSV and uncompressed PCM WAV input that fits the requirements
 - incremental processing and bounded display rendering for better performance
 
+## Download BLACKSITE
+
+If you just want to use BLACKSITE without setting up Python, packaged applications are available for:
+
+- macOS
+- Windows
+
+You can find both in the GitHub Release.
+
 ## My core pipeline
 
 ```text
