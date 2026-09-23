@@ -56,7 +56,7 @@ If you just want to use BLACKSITE without setting up Python, packaged applicatio
 - macOS
 - Windows
 
-You can find both in the GitHub Release.
+You can download both from the [BLACKSITE v1.0.0 GitHub Release](https://github.com/penguinoffline/BLACKSITE/releases/tag/v1.0.0).
 
 The Windows build is currently unsigned, so Windows may show a security warning when opening it for the first time.
 
