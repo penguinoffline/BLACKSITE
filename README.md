@@ -60,6 +60,42 @@ You can download both from the [BLACKSITE v1.0.0 GitHub Release](https://github.
 
 The Windows build is currently unsigned, so Windows may show a security warning when opening it for the first time.
 
+## Running BLACKSITE
+
+After downloading the release for your operating system:
+
+1. Extract the downloaded ZIP file.
+2. Open `BLACKSITE`.
+3. Select a supported CSV or WAV file to begin analysis.
+
+### macOS
+
+BLACKSITE v1.0 is not currently Apple-notarized, so macOS may block it the first time you open it with a warning saying Apple could not verify that BLACKSITE is free of malware.
+
+If this happens:
+
+1. Click **Done** on the warning.
+2. Open **System Settings → Privacy & Security**.
+3. Scroll down until you see that BLACKSITE was blocked.
+4. Click **Open Anyway**.
+5. Confirm that you want to open BLACKSITE.
+
+You should only need to do this for the first launch.
+
+### Example input
+
+If you just want to try BLACKSITE, you can use the included three-tone example:
+
+[`three_tone_demo.csv`](examples/three_tone_demo.csv)
+
+Open the link above and download the file from GitHub, then select `three_tone_demo.csv` in BLACKSITE like any other CSV input.
+
+### Display size
+
+BLACKSITE v1.0 was designed and tested primarily on larger displays. On smaller laptop screens, parts of the dashboard may appear cramped or extend beyond the available screen space.
+
+Scaling for smaller displays is planned for a future update.
+
 ## My core pipeline
 
 ```text
@@ -212,10 +248,6 @@ v1.0's important limitations include:
 - short recordings may not contain enough data for the 4 seconds needed for refinement
 
 See [`docs/KNOWN_LIMITATIONS.md`](docs/KNOWN_LIMITATIONS.md) for more detail.
-
-## Example
-
-[`examples/three_tone_demo.csv`](examples/three_tone_demo.csv) is a small synthetic input included only to make first run testing easy. It was generated specifically for this repository.
 
 ## My repository layout
 
